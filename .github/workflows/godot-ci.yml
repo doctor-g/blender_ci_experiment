@@ -22,10 +22,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Import assets
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends xz-utils
+          wget -nv https://mirrors.dotsrc.org/blender/release/Blender3.6/blender-3.6.0-linux-x64.tar.xz 
+          tar -xf blender-3.6.0-linux-x64.tar.xz
+          echo "filesystem/import/blender/blender3_path = `pwd blender-3.6.0-linux-x64`" >> ~/.config/godot/editor_settings-4.tres
+          cat ~/.config/godot/editor_settings-4.tres
+          godot -v -e --quit --headless
+
       - name: Move Windows templates into position
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+
       - name: Create staging directory
         run: mkdir -v -p build/windows
 
