@@ -30,7 +30,7 @@ jobs:
           tar -xf blender-3.6.0-linux-x64.tar.xz
           mkdir -p ~/.config/godot
           echo "[resource]" > ~/.config/godot/editor_settings-4.tres
-          echo "filesystem/import/blender/blender3_path = `pwd blender-3.6.0-linux-x64`" >> ~/.config/godot/editor_settings-4.tres
+          echo "filesystem/import/blender/blender3_path = `pwd`/blender-3.6.0-linux-x64" >> ~/.config/godot/editor_settings-4.tres
           echo "Here's the configuration file"
           cat ~/.config/godot/editor_settings-4.tres
           godot -v -e --quit --headless
