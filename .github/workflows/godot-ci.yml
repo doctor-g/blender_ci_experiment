@@ -28,6 +28,7 @@ jobs:
           apt-get install -y --no-install-recommends xz-utils
           wget -nv https://mirrors.dotsrc.org/blender/release/Blender3.6/blender-3.6.0-linux-x64.tar.xz 
           tar -xf blender-3.6.0-linux-x64.tar.xz
+          mkdir -p ~/.config/godot
           echo "filesystem/import/blender/blender3_path = `pwd blender-3.6.0-linux-x64`" >> ~/.config/godot/editor_settings-4.tres
           cat ~/.config/godot/editor_settings-4.tres
           godot -v -e --quit --headless
