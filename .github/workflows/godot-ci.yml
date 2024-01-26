@@ -47,3 +47,15 @@ jobs:
       - name: Build
         run: |
           godot -v --export-release --headless "Windows" ../build/windows/game.exe project/project.godot
+
+      - name: Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/windows/game.exe"
+          allowUpdates: true
+          body: "This draft build is updated upon every push to main"
+          name: "Latest"
+          replacesArtifacts: true 
+          draft: true
+          tag: latest
+          commit: main
